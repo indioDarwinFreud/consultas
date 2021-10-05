@@ -1,0 +1,84 @@
+body {
+  background-color: rgb(235, 233, 233);
+  font-family: 'Open Sans', sans-serif;
+  max-width: 100vw!important;
+  max-height: 100vh!important;
+}
+
+.nav-icon {
+  width: 50px;
+
+}
+.home-icon{
+  width: 150px;
+}
+
+.primary-btn {
+  background-color: rgb(3, 185, 155);
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background-color: rgb(2, 114, 95);
+  border-color: rgb(3, 185, 155, 0.541);
+  color: rgb(255, 255, 255);
+}
+
+.secondary-btn {
+  background-color: rgb(3, 185, 155);
+  border-color: white;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background-color: rgb(2, 114, 95);
+  color: #fff;
+}
+
+.edit-btn {
+  background-color: rgb(82, 195, 125);
+  color: #000;
+}
+
+.delete-btn {
+  background-color: #fb5858;
+  color: #000;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+.centeredd {
+  position:flex;
+  top: 30%;
+  left: center;
+  /* transform: translate(-50%, 50%); */
+}
+.centereddd {
+  position:sticky;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.fondo {
+
+  background-image: linear-gradient(to right, rgb(235, 233, 233),rgba(3, 185, 155, 0.541) , rgb(235, 233, 233));  
+}
+.decoradonav{
+background-color: rgb(3, 185, 155);
+}
+#message-div {
+  border: 2px solid lightgrey;
+  background-color: #f8f9fa;
+  padding: 30px;
+}
