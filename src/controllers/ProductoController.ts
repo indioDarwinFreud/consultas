@@ -4,7 +4,7 @@ import { ProductoServices } from "../services/ProductoService";
 // ----------------------------------------------------------------------------------------------------
 class ProductoController{
   async createhandle(request: Request, response: Response) {
-    const { nombre, precio, categorias } = request.body;
+    const { nombre, precio, categorias, tipo } = request.body;
 
     const createProductoService = new ProductoServices();
 
@@ -13,6 +13,7 @@ class ProductoController{
         nombre,
         precio,
         categorias,
+        tipo,
       }).then(() => {
         response.render("message", {
           message: "Producto creado correctamente"
@@ -87,12 +88,12 @@ class ProductoController{
   }
 
   async updatehandle(request: Request, response: Response) {
-    const { id, nombre, precio, categorias } = request.body;
+    const { id, nombre, precio, categorias, tipo } = request.body;
 
     const updateProductoService = new ProductoServices();
 
     try {
-      await updateProductoService.update({ id, nombre, precio, categorias }).then(() => {
+      await updateProductoService.update({ id, nombre, precio, categorias, tipo  }).then(() => {
         response.render("message", {
           message: "Producto actualizado correctamente"
         });

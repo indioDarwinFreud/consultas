@@ -8,15 +8,16 @@ import { ProductosRepository } from "../repositories/ProductosRepository";
 interface IProducto {
   id?: string
   nombre: string;
-  precio: string;
+  precio: number;
   categorias: string;
+  tipo : string;
 }
 
   
 class ProductoServices{
   static create: any;
   async create({nombre, precio, categorias}: IProducto) {
-    if (!nombre || !precio || !categorias ) {
+    if (!nombre || !precio || !categorias) {
       throw new Error("Por favor rellene todos los campos");
     }
 
@@ -37,7 +38,8 @@ class ProductoServices{
     const producto = new Producto();
     producto.nombre = nombre
     producto.precio = precio
-    producto.categorias = categoria
+    producto.tipo = categorias
+    producto.categorias = [categoria]
 
     await productosRepository.save(producto);
     

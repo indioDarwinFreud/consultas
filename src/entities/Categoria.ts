@@ -11,9 +11,9 @@ class Categoria {
   @Column()
   nombre: string;
 
-  @OneToMany( () => Producto,(producto) => producto.categorias)
+  @ManyToOne( () => Producto, producto => producto.categorias)
   
-  productos: Producto [];
+  productos: Producto;
 
   constructor() {
     if (!this.id) {

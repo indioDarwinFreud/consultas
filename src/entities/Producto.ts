@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Categoria } from "./Categoria";
 
@@ -12,12 +12,14 @@ class Producto {
   nombre: string;
 
   @Column()
-  precio: string;
+  precio: number;
 
-  @ManyToOne(() => Categoria,(categoria) => categoria.productos)
+  @Column()
+  tipo: string;
+
+  @OneToMany(() => Categoria, categoria => categoria.productos)
   
-  @JoinColumn({name:'idCategoria'})
-  categorias: Categoria;
+  categorias: Categoria [];
   
   @CreateDateColumn()
   created_at: Date;
