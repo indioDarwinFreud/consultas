@@ -29,21 +29,26 @@ class ProductoServices{
     if (idproductoAlreadyExists) {
       throw new Error("id producto ya esta registrado");
     }
+    const idcategoriaAlreadyExists = await categoriasRepository.findOne(categorias);
 
-    const categoria = new Categoria();
-    categoria.nombre = categorias
+
+      const categoria = new Categoria();
+      categoria.nombre = categorias
+      
+      await categoriasRepository.save(categoria) 
+      
+      const producto = new Producto();
+      producto.nombre = nombre
+      producto.precio = precio
+      producto.tipo = categorias
+      producto.categorias = categoria
+  
+      await productosRepository.save(producto);
+      
+      return producto;
+   
     
-    await categoriasRepository.save(categoria)
-
-    const producto = new Producto();
-    producto.nombre = nombre
-    producto.precio = precio
-    producto.tipo = categorias
-    producto.categorias = [categoria]
-
-    await productosRepository.save(producto);
-    
-    return producto;
+  
   }
 
   async delete(id: string) {

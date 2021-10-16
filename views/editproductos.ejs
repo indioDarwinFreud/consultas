@@ -31,7 +31,7 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./add">Agregar usuario</a>
+            <a class="nav-link active" aria-current="page" href="./add-producto">Agregar Producto</a>
           </li>
         </ul>
         <form class="d-flex" action="./search" method="GET">
@@ -47,68 +47,30 @@
       <h2>Tabla de usuarios</h2>
     </div>
     <br>
-    <form action="./edit-user" method="POST">
-      <input type="hidden" name="id" value="<%= user.id %>">
+    <form action="./edit-productos" method="POST">
+      <input type="hidden" name="id" value="<%= producto.id %>">
       <div class="row">
         <div class="col-12">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" name="username" id="username" class="form-control" value="<%= user.username %>">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" name="nombre" id="nombre" class="form-control" value="<%= producto.nombre %>">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col-6">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" name="email" id="email" class="form-control" value="<%= user.email %>">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="text" name="precio" id="precio" class="form-control" value="<%= producto.precio %>">
         </div>
         <div class="col-6">
-          <label for="telefono" class="form-label">Telefono</label>
-          <input type="text" name="telefono" id="telefono" class="form-control" value="<%= user.telefone %>">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-6">
-          <label for="ciudad" class="form-label">Ciudad</label>
-          <input type="text" name="cidade" id="ciudad" class="form-control" value="<%= user.cidade %>">
-        </div>
-        <div class="col-6">
-          <label for="estado" class="form-label">Estado</label>
-          <select name="estado" id="estado" class="form-select">
-            <option value="<%= user.estado %>" selected>
-              <%= user.estado %>
-            </option>
-            <option value="BS">Buenos Aires</option>
-            <option value="CT">Catamarca</option>
-            <option value="CC">Chaco</option>
-            <option value="CH">Chubut</option>
-            <option value="CBA">Cordoba</option>
-            <option value="CE">Corrientes</option>
-            <option value="ER">Entre Rios</option>
-            <option value="FR">Formosa</option>
-            <option value="JJ">Jujuy</option>
-            <option value="LP">La Pampa</option>
-            <option value="LR">La Rioja</option>
-            <option value="MDZ">Mendoza</option>
-            <option value="MS">Misiomes</option>
-            <option value="NQ">Neuquen</option>
-            <option value="RN">Rio Negro</option>
-            <option value="ST">Salta</option>
-            <option value="SJ">San Juan</option>
-            <option value="SL">San Luis</option>
-            <option value="SC">Santa Cruz</option>
-            <option value="SF">Santa Fe</option>
-            <option value="SE">Santiago del Estero</option>
-            <option value="TF">Tierra del Fuego</option>
-            <option value="TC">Tucuman</option>
-          </select>
+          <label for="tipo" class="form-label">Tipo</label>
+          <input type="text" name="tipo" id="tipo" class="form-control" value="<%= producto.tipo %>">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col-6">
           <div class="float-start">
-            <button type="submit" class="btn primary-btn">Atualizar usuário</button>
+            <button type="submit" class="btn primary-btn">Atualizar Producto</button>
           </div>
         </div>
         <div class="col-6">

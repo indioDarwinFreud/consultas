@@ -53,7 +53,7 @@ class ProductoController{
 
     const producto = await getProductoDataService.getData(id);
 
-    return response.render("edit", {
+    return response.render("editproductos", {
       producto: producto
     });
   }

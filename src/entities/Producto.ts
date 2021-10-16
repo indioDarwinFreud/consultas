@@ -17,9 +17,9 @@ class Producto {
   @Column()
   tipo: string;
 
-  @OneToMany(() => Categoria, categoria => categoria.productos)
-  
-  categorias: Categoria [];
+  @ManyToOne(() => Categoria, categoria => categoria.productos)
+
+  categorias: Categoria 
   
   @CreateDateColumn()
   created_at: Date;
