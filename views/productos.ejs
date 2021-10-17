@@ -42,62 +42,74 @@
     </div>
   </nav>
   <br>
-  <div class="centeredd" width="100vw">
-    <div class="text-center">
-      <h2>Tabla de Productos</h2>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-      <table class="table table-centered">
-        <thead>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Categoria</th>
-        </thead>
-        <tbody>
-          <% productos.forEach(function(producto) { %>
-            <tr>
-              <td>
-                <%= producto.id %>
-              </td>
-              <td>
-                <%= producto.nombre %>
-              </td>
-              <td>
-                <%= producto.precio %>
-              </td>
-              <td>
-                <%= producto.tipo %>
-              </td>
-              <td>
-                <div class="row">
+  <div class="center">
+    <div class="row container centeredd">
+      <div class="text-center">
+        <h2>Tabla de Productos</h2>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+        <table class="table table-hover">
+          <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Atualizar</th>
+            <th scope="col">Comportamiento</th>
+            <th scope="col">Categoria</th>
+          </thead>
+          <tbody>
+            <% productos.forEach(function(producto) { %>
+              <tr>
+                <td>
+                  <%= producto.id %>
+                </td>
+                <td>
+                  <%= producto.nombre %>
+                </td>
+                <td>
+                  <%= producto.precio %>
+                </td>
+                <td>
+                  <%= producto.created_at.toLocaleDateString() %>
+                    <%= producto.created_at.toLocaleTimeString() %>
+                </td>
+                <td>
+                  <%= producto.updated_at.toLocaleDateString() %>
+                    <%= producto.updated_at.toLocaleTimeString() %>
+                </td>
+                <td>
+                  <%= producto.tipo %>
+                </td>
+                <td>
                   <div class="row">
-                    <form action="./edit-productos" method="GET">
-                      <input type="hidden" name="id" value="<%= producto.id %>">
-                      <button type="submit" class="btn edit-btn"><i class="bi bi-pencil"></i></button>
-                    </form>
+                    <div class="row">
+                      <form action="./edit-productos" method="GET">
+                        <input type="hidden" name="id" value="<%= producto.id %>">
+                        <button type="submit" class="btn edit-btn"><i class="bi bi-pencil"></i></button>
+                      </form>
+                    </div>
+                    <div class="row"></div>
+                    <div class="row">
+                      <form action="./delete-productos" method="POST">
+                        <input type="hidden" name="id" value="<%= producto.id%>">
+                        <button type="submit" class="btn delete-btn"><i class="bi bi-trash"></i></button>
+                      </form>
+                    </div>
                   </div>
-                  <div class="row"></div>
-                  <div class="row">
-                    <form action="./delete-productos" method="POST">
-                      <input type="hidden" name="id" value="<%= producto.id%>">
-                      <button type="submit" class="btn delete-btn"><i class="bi bi-trash"></i></button>
-                    </form>
-                  </div>
-                </div>
-              </td>
+                </td>
+              </tr>
+            <% }) %>
             </tr>
-          <% }) %>
-          </tr>
-        </tbody>
-      </table>
-    <br>
-    <br>
-    <div class="float-start">
-      <a href="./add-producto" class="btn primary-btn">Agregar Producto</a>
+          </tbody>
+        </table>
+      <br>
+      <br>
+      <div class="float-start">
+        <a href="./add-producto" class="btn primary-btn">Agregar Producto</a>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

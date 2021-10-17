@@ -64,10 +64,7 @@ body {
   /* transform: translate(-50%, 50%); */
 }
 .centereddd {
-  position:sticky;
-  top: 100%;
-  left: 100%;
-  transform: translate(-50%, -50%);
+  display:list-item;
 }
 
 .fondo {

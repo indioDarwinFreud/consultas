@@ -8,3 +8,8 @@ CRUD made with Node.js, Express, TypeScript, TypeORM, EJS &amp; SQLite.
 - Run `yarn typeorm migration:run` to run the migrations.
 - Run `yarn dev` to start the server.
 - The CRUD will be avaiable at `http://localhost:3000`.
+
+### Integrantes:
+Petitfour Facundo
+Frasca Joaquin
+Poblete Faustino 

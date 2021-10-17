@@ -31,48 +31,48 @@
             <a class="nav-link active" aria-current="page" href="./">Home</a>
           </li>
         </ul>
-        <form class="d-flex" action="./search" method="GET">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">
-          <button class="btn secondary-btn" type="submit">Buscar</button>
-        </form>
       </div>
     </div>
   </nav>
   <br>
-  <div class="container">
+  <div class="centereddd" width="100vw">
     <div class="text-center">
-      <h2>Tabla de usuarios</h2>
+      <br>
+      <h2>Registro de Usuarios</h2>
     </div>
     <br>
-    <form action="./edit-productos" method="POST">
-      <input type="hidden" name="id" value="<%= producto.id %>">
-      <div class="row">
-        <div class="col-12">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" name="nombre" id="nombre" class="form-control" value="<%= producto.nombre %>">
+    <br>
+    <form action="./registrarse" method="POST">
+      <div class="row center">
+        <div class="col-6">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" name="username" id="username" class="form-control">
         </div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-6">
-          <label for="precio" class="form-label">Precio</label>
-          <input type="text" name="precio" id="precio" class="form-control" value="<%= producto.precio %>">
-        </div>
-        <div class="col-6">
-          <label for="tipo" class="form-label">Tipo</label>
-          <input type="text" name="tipo" id="tipo" class="form-control" value="<%= producto.tipo %>">
-        </div>
+      <div class="row center">
+      <div class="col-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" name="email" id="email" class="form-control">
+         </div>
       </div>
       <br>
-      <div class="row">
+      <div class="row center">
         <div class="col-6">
+          <label for="contraseña" class="form-label">Contraseña</label>
+          <input type="password" name="contraseña" id="contraseña" class="form-control">
+         </div>
+      </div>
+      <br><br><br>
+       <div class="row center">
+        <div class="col-4">
           <div class="float-start">
-            <button type="submit" class="btn primary-btn">Atualizar Producto</button>
+              <button type="submit" class="btn primary-btn">Registrarse</button>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <div class="float-end">
-            <a href="./" class="btn secondary-btn">Volver al home</a>
+            <a href="./" class="btn secondary-btn">Volver al Home</a>
           </div>
         </div>
       </div>

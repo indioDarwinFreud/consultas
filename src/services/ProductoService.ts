@@ -101,15 +101,17 @@ class ProductoServices{
 
   }
 
-  async update({ id, nombre, precio }: IProducto) {
+  async update({ id, nombre, precio, tipo }: IProducto) {
     const productosRepository = getCustomRepository(ProductosRepository);
-
+    const categoria = getCustomRepository(CategoriasRepository)
+    
     const producto = await productosRepository
       .createQueryBuilder()
       .update(Producto)
-      .set({ nombre, precio })
+      .set({ nombre, precio, tipo })
       .where("id = :id", { id })
       .execute();
+
 
     return producto;
 

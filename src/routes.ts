@@ -16,10 +16,17 @@ const deleteProductoController = new ProductoController();
 const listProductosController = new ProductoController();
 const getProductoDataController = new ProductoController();
 
+router.get('/login', function(req,res){
+  res.render("login")
+})
 
+router.get("/registrarse",function(req,res){
+  res.render("registrarse")
+})
 router.get("/",function(req, res){
   res.render("index")
 })
+
 
 router.get("/usuarios", listUsersController.listhandle);
 
