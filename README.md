@@ -10,6 +10,6 @@ CRUD made with Node.js, Express, TypeScript, TypeORM, EJS &amp; SQLite.
 - The CRUD will be avaiable at `http://localhost:3000`.
 
 ### Integrantes:
-Petitfour Facundo
-Frasca Joaquin
-Poblete Faustino 
+- Petitfour Facundo.
+- Frasca Joaquin.
+- Poblete Faustino.
