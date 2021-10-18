@@ -6,7 +6,7 @@ import { Cuenta } from "../entities/Cuenta";
 interface ICuenta {
   id?: string
   username: string;
-  email: string;
+  email?: string;
   contraseña: number;
 
 }
@@ -70,6 +70,25 @@ class CuentaService{
       .execute();
 
     return user;
+
+  }
+
+  async autentication({ username, contraseña}: ICuenta) {
+    if (!username || !contraseña) {
+      throw new Error("Por favor rellene todos los campos");
+    }
+
+    const cuentasRepository = getCustomRepository(CuentasRepository);
+
+    const cuentaAlreadyExists = await cuentasRepository.findOne({ username, contraseña });
+
+    if (cuentaAlreadyExists) {
+      return true
+    }
+    else{
+      throw new Error("Usuario o Contraseña incorrecto");
+    }  
+    
 
   }
 

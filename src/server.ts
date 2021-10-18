@@ -2,13 +2,21 @@ import "reflect-metadata";
 import "express-async-errors";
 import express, { Request, Response, NextFunction } from "express";
 import path from "path";
-import { router } from "./routes";
-import "./database";
+import { routerUser } from "./routes/UsuarioRouter";
+import { routerProductos } from "./routes/ProductoRouter";
+import { routerCuenta } from "./routes/CuentaRouter";
+
+import "./database"; //Conexion con la base de datos.
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(router);
+
+//Middleware - rutas
+
+app.use(routerUser);
+app.use(routerProductos);
+app.use(routerCuenta);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {

@@ -75,6 +75,26 @@ class CuentaController{
     }
 
   }
+  
+  async loginautentication(request:Request, response: Response){
+    const {username, contraseña} = request.body;
+    const loginCuentaAutenticacion = new CuentaService;
+
+    try {
+      await loginCuentaAutenticacion.autentication({
+        username,
+        contraseña
+      }).then(() => {
+        response.render("message", {
+          message: "Sesion iniciada"
+        });
+      });
+    } catch (err) {
+      response.render("message", {
+        message: `Error al iniciar Sesion: ${err.message}`
+      });
+    }
+  }
 }
 
 
