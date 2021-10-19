@@ -11,18 +11,18 @@ const listProductosController = new ProductoController();
 const getProductoDataController = new ProductoController();
 
 
-routerProductos.get("/productos",listProductosController.listhandle);
+routerProductos.get("/",listProductosController.listhandle);
 
-routerProductos.get("/add-producto", (request, response) => {
+routerProductos.get("/add", (request, response) => {
   response.render("addproductos");
 });
 
-routerProductos.post("/add-productos", createProductoController.createhandle);
+routerProductos.post("/add", createProductoController.createhandle);
 
-routerProductos.get("/search-productos", searchProductoController.searchhandle);
+routerProductos.get("/search", searchProductoController.searchhandle);
 
-routerProductos.get("/edit-productos", getProductoDataController.getdatahandle);
+routerProductos.get("/edit", getProductoDataController.getdatahandle);
 
-routerProductos.post("/edit-productos", updateProductoController.updatehandle);
+routerProductos.post("/edit", updateProductoController.updatehandle);
 
-routerProductos.post("/delete-productos", deleteProductoController.deletehandle);
+routerProductos.post("/delete", deleteProductoController.deletehandle);

@@ -5,18 +5,19 @@ import path from "path";
 import { routerUser } from "./routes/UsuarioRouter";
 import { routerProductos } from "./routes/ProductoRouter";
 import { routerCuenta } from "./routes/CuentaRouter";
-
+import { router } from "./routes/Router";
 import "./database"; //Conexion con la base de datos.
+
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Middleware - rutas
-
-app.use(routerUser);
-app.use(routerProductos);
-app.use(routerCuenta);
+app.use(router);
+app.use("/user", routerUser);
+app.use("/productos", routerProductos);
+app.use("/login", routerCuenta);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {

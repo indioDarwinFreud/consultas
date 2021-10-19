@@ -20,11 +20,11 @@ routerCuenta.get("/registrarse", (request, response) => {
 
 routerCuenta.post("/registrarse", createCuentaController.createhandle);
 
-routerCuenta.get("/edit-Cuentas", getCuentaDataController.getdatahandle);
+routerCuenta.get("/edit" ,getCuentaDataController.getdatahandle);
 
-routerCuenta.post("/edit-Cuentas", updateCuentaController.updatehandle);
+routerCuenta.post("/edit", updateCuentaController.updatehandle);
 
-routerCuenta.post("/delete-Cuentas", deleteCuentaController.deletehandle);
+routerCuenta.post("/delete", deleteCuentaController.deletehandle);
 
 
 

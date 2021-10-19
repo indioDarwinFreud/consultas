@@ -1,10 +1,10 @@
 function counter() {
-  let countdown = 3;
+  let countdown = 2;
 
   let timerDiv = document.getElementById("timer");
 
   let timer = setInterval(function () {
-    timerDiv.innerHTML = `Regreso al home ${countdown}`;
+    timerDiv.innerHTML = `Regreso al home `; // ${countdown}
     countdown--;
     if (countdown === 0) {
       clearInterval(timer);

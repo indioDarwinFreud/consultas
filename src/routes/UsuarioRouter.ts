@@ -10,24 +10,21 @@ const deleteUserController = new UserController();
 const listUsersController = new UserController();
 const getUserDataController = new UserController();
 
-routerUser.get("/",function(req, res){
-  res.render("index")
-})
 
-routerUser.get("/usuarios", listUsersController.listhandle);
+routerUser.get("/", listUsersController.listhandle);
 
-routerUser.get("/add-user", (request, response) => {
+routerUser.get("/add", (request, response) => {
   response.render("add");
 });
 
-routerUser.post("/add-user", createUserController.createhandle);
+routerUser.post("/add", createUserController.createhandle);
 
 routerUser.get("/search", searchUserController.searchhandle);
 
 routerUser.get("/edit", getUserDataController.getdatahandle);
 
-routerUser.post("/edit-user", updateUserController.updatehandle);
+routerUser.post("/edit", updateUserController.updatehandle);
 
-routerUser.post("/delete-user", deleteUserController.deletehandle);
+routerUser.post("/delete", deleteUserController.deletehandle);
 
 
