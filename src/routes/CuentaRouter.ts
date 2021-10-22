@@ -6,13 +6,15 @@ const createCuentaController = new CuentaController();
 const updateCuentaController = new CuentaController();
 const deleteCuentaController = new CuentaController();
 const getCuentaDataController = new CuentaController();
-
+const autenticationController = new CuentaController
 
 //  ------------- Categoria ---------------
 
-routerCuenta.get('/login', function(req,res){
+routerCuenta.get('/', function(req,res){
   res.render("login")
 })
+
+routerCuenta.post("/",autenticationController.loginautentication);
 
 routerCuenta.get("/registrarse", (request, response) => {
   response.render("registrarse");

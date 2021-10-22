@@ -86,14 +86,14 @@
                 <td>
                   <div class="row">
                     <div class="row">
-                      <form action="./edit-productos" method="GET">
+                      <form action="./edit" method="GET">
                         <input type="hidden" name="id" value="<%= producto.id %>">
                         <button type="submit" class="btn edit-btn"><i class="bi bi-pencil"></i></button>
                       </form>
                     </div>
                     <div class="row"></div>
                     <div class="row">
-                      <form action="./delete-productos" method="POST">
+                      <form action="./delete" method="POST">
                         <input type="hidden" name="id" value="<%= producto.id%>">
                         <button type="submit" class="btn delete-btn"><i class="bi bi-trash"></i></button>
                       </form>

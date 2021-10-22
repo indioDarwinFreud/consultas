@@ -9,15 +9,13 @@ const updateProductoController = new ProductoController();
 const deleteProductoController = new ProductoController();
 const listProductosController = new ProductoController();
 const getProductoDataController = new ProductoController();
-
+const buscaCategoriasController = new ProductoController();
 
 routerProductos.get("/",listProductosController.listhandle);
 
-routerProductos.get("/add", (request, response) => {
-  response.render("addproductos");
-});
-
 routerProductos.post("/add", createProductoController.createhandle);
+
+routerProductos.get("/add", buscaCategoriasController.searchCategoria);
 
 routerProductos.get("/search", searchProductoController.searchhandle);
 

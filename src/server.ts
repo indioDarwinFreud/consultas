@@ -5,6 +5,7 @@ import path from "path";
 import { routerUser } from "./routes/UsuarioRouter";
 import { routerProductos } from "./routes/ProductoRouter";
 import { routerCuenta } from "./routes/CuentaRouter";
+import { routerCategoria } from "./routes/CategoriaRouter";
 import { router } from "./routes/Router";
 import "./database"; //Conexion con la base de datos.
 
@@ -18,6 +19,7 @@ app.use(router);
 app.use("/user", routerUser);
 app.use("/productos", routerProductos);
 app.use("/login", routerCuenta);
+app.use("/categoria",routerCategoria)
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {
@@ -32,7 +34,7 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "..", "/public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "..", "views"));
 

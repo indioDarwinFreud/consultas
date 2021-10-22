@@ -24,31 +24,40 @@ class ProductoServices{
     const productosRepository = getCustomRepository(ProductosRepository);
     const categoriasRepository = getCustomRepository(CategoriasRepository);
 
-    const idproductoAlreadyExists = await productosRepository.findOne({ nombre });
+    const idproductoAlreadyExists = await productosRepository.findOne({ nombre : nombre });
 
     if (idproductoAlreadyExists) {
       throw new Error("id producto ya esta registrado");
     }
-    const idcategoriaAlreadyExists = await categoriasRepository.findOne(categorias);
 
-
-      const categoria = new Categoria();
-      categoria.nombre = categorias
-      
-      await categoriasRepository.save(categoria) 
-      
-      const producto = new Producto();
-      producto.nombre = nombre
-      producto.precio = precio
-      producto.tipo = categorias
-      producto.categorias = categoria
-  
-      await productosRepository.save(producto);
-      
-      return producto;
-   
+    const categoria = await categoriasRepository.findOne({ nombre : categorias })
     
-  
+    console.log(categoria)
+
+    const producto = new Producto();
+    producto.nombre = nombre
+    producto.precio = precio
+    producto.tipo = categoria.nombre
+    producto.categorias = categoria
+    await productosRepository.save(producto);
+    
+    return producto
+
+    // if (!categoria) {
+    //   const producto = new Producto();
+    //   producto.nombre = nombre
+    //   producto.precio = precio
+    //   producto.tipo = categoria.nombre
+    //   producto.categorias = categoria
+
+    //   await productosRepository.save(producto);
+      
+    //   return producto
+    // }
+    // else {
+    //   throw new Error("No existe esa categoria");
+    // }
+
   }
 
   async delete(id: string) {

@@ -88,6 +88,7 @@ class CuentaController{
         response.render("message", {
           message: "Sesion iniciada"
         });
+        response.render("/")
       });
     } catch (err) {
       response.render("message", {

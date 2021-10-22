@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CRUD made with Node.js, Express, TypeScript, TypeORM, EJS & SQLite.",
   "main": "Home.js",
-  "repository": "https://github.com/sinvalbsneto/crud_nodejs.git",
+  "repository": "original: https://github.com/sinvalbsneto/crud_nodejs.git || modificado: https://github.com/facupetitfour/crud_nodejs-main.git ",
   "author": "Sinval Neto <70284242+sinvalbsneto@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {

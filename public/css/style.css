@@ -66,7 +66,16 @@ body {
 .centereddd {
   display:list-item;
 }
-
+.login-bnt{
+  background-color: rgb(3, 185, 155);
+  border-color: rgba(1, 255, 213, 0.541);
+  color: rgb(255, 255, 255);
+}
+.singup-bnt{
+  background-color: rgb(3, 185, 155);
+  border-color: rgba(1, 255, 213, 0.541);
+  color: rgb(255, 255, 255);
+}
 .fondo {
 
   background-image: linear-gradient(to right, rgb(235, 233, 233),rgba(3, 185, 155, 0.541) , rgb(235, 233, 233));  

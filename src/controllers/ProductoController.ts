@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
+import { CategoriaService } from "../services/CategoriaService";
 import { ProductoServices } from "../services/ProductoService";
-
 // ----------------------------------------------------------------------------------------------------
 class ProductoController{
   async createhandle(request: Request, response: Response) {
@@ -25,6 +25,13 @@ class ProductoController{
       });
     }
 
+  }
+  async searchCategoria(request: Request,response: Response){
+    const listarcategoria = new CategoriaService();
+
+    const categorias = await listarcategoria.list()
+
+    return response.render('addproductos',{categorias})
   }
 
   async deletehandle(request: Request, response: Response) {
