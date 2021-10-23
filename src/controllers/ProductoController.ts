@@ -59,9 +59,15 @@ class ProductoController{
     const getProductoDataService = new ProductoServices();
 
     const producto = await getProductoDataService.getData(id);
+    
+    const listarcategoria = new CategoriaService();
+
+    const categorias = await listarcategoria.list()
+
 
     return response.render("editproductos", {
-      producto: producto
+      producto: producto,
+      categorias: categorias
     });
   }
 
@@ -83,8 +89,8 @@ class ProductoController{
 
     try {
       const productos = await searchProductoService.search(search);
-      response.render("search", {
-        producto: productos,
+      response.render("searchproductos", {
+        productos: productos,
         search: search
       });
     } catch (err) {

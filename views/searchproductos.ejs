@@ -51,14 +51,19 @@
     <br>
     <table class="table table-hover">
       <thead>
+        <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Precio</th>
         <th scope="col">Atualizar</th>
         <th scope="col">Comportamiento</th>
+        <th scope="col">Categoria</th>
       </thead>
       <tbody>
         <% productos.forEach(function(producto) { %>
           <tr>
+            <td>
+              <%= producto.id %>
+            </td>
             <td>
               <%= producto.nombre %>
             </td>
@@ -66,12 +71,15 @@
               <%= producto.precio %>
             </td>
             <td>
-              <%= user.created_at.toLocaleDateString() %>
-                <%= user.created_at.toLocaleTimeString() %>
+              <%= producto.created_at.toLocaleDateString() %>
+                <%= producto.created_at.toLocaleTimeString() %>
             </td>
             <td>
-              <%= user.updated_at.toLocaleDateString() %>
-                <%= user.updated_at.toLocaleTimeString() %>
+              <%= producto.updated_at.toLocaleDateString() %>
+                <%= producto.updated_at.toLocaleTimeString() %>
+            </td>
+            <td>
+              <%= producto.tipo %>
             </td>
             <td>
               <div class="row">

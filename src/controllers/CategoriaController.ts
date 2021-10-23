@@ -50,8 +50,8 @@ class CategoriaController{
 
     const categoria = await getCategoriaDataService.getData(id);
 
-    return response.render("editcategorias", {
-      categoria: categoria
+    return response.render("editcategoria", {
+      categorias: categoria
     });
   }
 

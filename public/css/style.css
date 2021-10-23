@@ -67,12 +67,12 @@ body {
   display:list-item;
 }
 .login-bnt{
-  background-color: rgb(3, 185, 155);
+  background-color: rgb(102, 189, 174);
   border-color: rgba(1, 255, 213, 0.541);
   color: rgb(255, 255, 255);
 }
 .singup-bnt{
-  background-color: rgb(3, 185, 155);
+  background-color: rgb(102, 189, 174);
   border-color: rgba(1, 255, 213, 0.541);
   color: rgb(255, 255, 255);
 }
@@ -81,7 +81,7 @@ body {
   background-image: linear-gradient(to right, rgb(235, 233, 233),rgba(3, 185, 155, 0.541) , rgb(235, 233, 233));  
 }
 .decoradonav{
-background-color: rgb(3, 185, 155);
+background-color: rgb(1, 214, 196);
 }
 #message-div {
   border: 2px solid lightgrey;

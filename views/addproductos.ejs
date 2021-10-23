@@ -46,31 +46,33 @@
     <br>
     <form action="./add" method="POST">
       <br>
-      <div class="row">
-        <div class="col-6">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" name="nombre" id="nombre" class="form-control">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" name="nombre" id="nombre" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" name="precio" id="precio" class="form-control">
+          </div>
         </div>
-        <div class="col-6">
-          <label for="precio" class="form-label">Precio</label>
-          <input type="number" name="precio" id="precio" class="form-control">
+        <br>
+        <div class="row">
+          <div class="col-6">
+            <label for="categorias" class="form-label">Categoria</label>
+            <select name="categorias" id="categorias" class="form-select">
+              <option value="categorias" selected disabled>Seleccione Categoria</option>
+              <% categorias.forEach(function(categoria) { %>
+                <option value="<%= categoria.nombre%>">
+                  <%= categoria.nombre %>
+                </option>
+                <%})%>
+            </select>
+          </div>
         </div>
+        <br>
       </div>
-      <br>
-      <div class="row">
-        <div class="col-6">
-          <label for="categorias" class="form-label">Categoria</label>
-          <select name="categorias" id="categorias" class="form-select">
-            <option value="categorias" selected disabled>Seleccione Categoria</option>
-            <% categorias.forEach(function(categoria) { %>
-              <option value="<%= categoria.nombre%>">
-                <%= categoria.nombre %>
-              </option>
-              <%})%>
-          </select>
-        </div>
-      </div>
-      <br>
       <div class="row">
         <div class="col-6">
           <div class="float-start">

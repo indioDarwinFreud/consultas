@@ -103,24 +103,25 @@ class ProductoServices{
       .createQueryBuilder()
       .where("nombre like :search", { search: `%${search}%` })
       .orWhere("precio like :search", { search: `%${search}%` })
-      .orWhere("categoria like :search", { search: `%${search}%` })
+      .orWhere("tipo like :search", { search: `%${search}%` })
       .getMany();
 
     return producto;
 
   }
 
-  async update({ id, nombre, precio, tipo }: IProducto) {
+  async update({ id, nombre, precio, categorias }: IProducto) {
     const productosRepository = getCustomRepository(ProductosRepository);
-    const categoria = getCustomRepository(CategoriasRepository)
-    
+    const categoriasRepository = getCustomRepository(CategoriasRepository);
+
+    const categoria = await categoriasRepository.findOne({ nombre : categorias })
+
     const producto = await productosRepository
       .createQueryBuilder()
       .update(Producto)
-      .set({ nombre, precio, tipo })
+      .set({ nombre, precio, tipo: categorias , categorias: categoria })
       .where("id = :id", { id })
       .execute();
-
 
     return producto;
 
