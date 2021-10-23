@@ -9,12 +9,14 @@ import { routerCategoria } from "./routes/CategoriaRouter";
 import { router } from "./routes/Router";
 import "./database"; //Conexion con la base de datos.
 
-
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Middleware - rutas
+
+
 app.use(router);
 app.use("/user", routerUser);
 app.use("/productos", routerProductos);
