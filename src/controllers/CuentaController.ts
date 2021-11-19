@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import { CuentaService } from "../services/CuentaService";
 
-
 class CuentaController{
 
   async createhandle(request: Request, response: Response) {
-    const { username, email, contraseña} = request.body;
+    const { username, email, contraseña } = request.body;
 
     const createCuentaService = new CuentaService();
 
@@ -16,17 +15,37 @@ class CuentaController{
         contraseña,
       }).then(() => {
         response.render("message", {
-          message: "Cuenta creado correctamente"
+          message: "Regristrado creado correctamente"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Error al crear Cuenta: ${err.message}`
+        message: `Error al Regristrarse ${err.message}`
       });
     }
 
   }
+  // async createhandle(cuenta) {
+  //   const { username, email, contraseña} = cuenta
 
+  //   const createCuentaService = new CuentaService();
+
+  //   createCuentaService.create({
+  //     username,
+  //     email,
+  //     contraseña,
+  //   })
+ 
+
+  // }
+  async devolverCuentahandle(request: Request){
+    const { username, email, contraseña} = request.body;
+    const devolverCuenta = new CuentaService();
+
+    devolverCuenta.devolverCuenta({username,email,contraseña})
+
+    return devolverCuenta
+  }
   async deletehandle(request: Request, response: Response) {
     const { id } = request.body;
 
@@ -44,18 +63,30 @@ class CuentaController{
       });
     }
   }
-  async getdatahandle(request: Request, response: Response) {
-    let { id } = request.query;
-    id = id.toString();
+
+  // async getdatahandle(request: Request, response: Response) {
+  //   let { id } = request.query;
+  //   id = id.toString();
+
+  //   const getCuentaDataService = new CuentaService();
+
+  //   const user = await getCuentaDataService.getData(id);
+
+  //   return response.render("edit", {
+  //     user: user
+  //   });
+  // }
+  async getdatahandle(cuenta) {
+    let { username } = cuenta;
+    username = username.toString();
 
     const getCuentaDataService = new CuentaService();
 
-    const user = await getCuentaDataService.getData(id);
+    const user = await getCuentaDataService.getData(username);
 
-    return response.render("edit", {
-      user: user
-    });
-  }
+    return {user: user}
+  };
+  
 
   async updatehandle(request: Request, response: Response) {
     const { id, username, email, contraseña} = request.body;
@@ -76,27 +107,20 @@ class CuentaController{
 
   }
   
-  async loginautentication(request:Request, response: Response){
-    const {username, contraseña} = request.body;
+  async loginautentication(cuenta){
+    const {username, contraseña} = cuenta
     const loginCuentaAutenticacion = new CuentaService;
 
-    try {
-      await loginCuentaAutenticacion.autentication({
+  
+      return await loginCuentaAutenticacion.autentication({
         username,
         contraseña
-      }).then(() => {
-        response.render("message", {
-          message: "Sesion iniciada"
-        });
-        response.render("/")
-      });
-    } catch (err) {
-      response.render("message", {
-        message: `Error al iniciar Sesion: ${err.message}`
+
       });
     }
+    
   }
-}
+
 
 
 export { CuentaController };

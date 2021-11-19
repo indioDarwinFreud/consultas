@@ -1,13 +1,14 @@
 import { getCustomRepository } from "typeorm";
 import { CuentasRepository } from "../repositories/CuentasRepository";
 import { Cuenta } from "../entities/Cuenta";
+import { Helpers } from "../lib/helpers";
 
 
 interface ICuenta {
   id?: string
-  username: string;
+  username?: string;
   email?: string;
-  contraseña: number;
+  contraseña?: string;
 
 }
 class CuentaService{
@@ -17,7 +18,7 @@ class CuentaService{
     }
 
     const cuentasRepository = getCustomRepository(CuentasRepository);
-
+    const encriptado = new Helpers
     const usernameAlreadyExists = await cuentasRepository.findOne({ username });
 
     if (usernameAlreadyExists) {
@@ -30,12 +31,19 @@ class CuentaService{
       throw new Error("El Email ya esta registrado");
     }
 
+    contraseña = await encriptado.encryptContraseña(contraseña)
     const user = cuentasRepository.create({ username, email, contraseña});
-
+    
     await cuentasRepository.save(user);
+  
+    return user
 
-    return user;
+  }
+  
+  async devolverCuenta(username ){
 
+    const cuentasRepository = getCustomRepository(CuentasRepository);
+    return await cuentasRepository.findOne({ username });
   }
   async delete(id: string) {
     const cuentaRepository = getCustomRepository(CuentasRepository);
@@ -50,10 +58,23 @@ class CuentaService{
     return user;
 
   }
-  async getData(id: string) {
+  // async delete(username) {
+  //   const cuentaRepository = getCustomRepository(CuentasRepository);
+
+  //   const user = await cuentaRepository
+  //     .createQueryBuilder()
+  //     .select()
+  //     .from(Cuenta,username)
+  //     .where({ username })
+
+  //   return user;
+
+  // }
+  
+  async getData(username) {
     const cuentasRepository = getCustomRepository(CuentasRepository);
 
-    const user = await cuentasRepository.findOne(id);
+    const user = await cuentasRepository.findOne(username);
 
     return user;
   }
@@ -78,18 +99,21 @@ class CuentaService{
       throw new Error("Por favor rellene todos los campos");
     }
 
+    const desencriptado = new Helpers
     const cuentasRepository = getCustomRepository(CuentasRepository);
+    const cuentaAlreadyExists = await cuentasRepository.findOne({ username });
 
-    const cuentaAlreadyExists = await cuentasRepository.findOne({ username, contraseña });
-
-    if (cuentaAlreadyExists) {
+    if(!cuentaAlreadyExists){
+      const contraseña_desencriptado = desencriptado.matchContraseña(contraseña, cuentaAlreadyExists.contraseña )
+      console.log (contraseña_desencriptado)
+      if (contraseña_desencriptado) {
       return true
+      }else{
+        return false
+      }  
+    }else{
+      return false
     }
-    else{
-      throw new Error("Usuario o Contraseña incorrecto");
-    }  
-    
-
   }
 
 }

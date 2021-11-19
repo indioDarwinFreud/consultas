@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { ProductoController } from "../controllers/ProductoController";
 export const router = Router()
+import { Helpers } from "../lib/helpers";
 
-const list = new ProductoController
+const protect = new Helpers;
+const list = new ProductoController;
 
-router.get("/",function(req, res){
-    res.render("index")
-  })
+router.get("/",protect.isLoggedIn,function(req, res){
+    res.render("index");
+  });

@@ -8,20 +8,36 @@ import { routerCuenta } from "./routes/CuentaRouter";
 import { routerCategoria } from "./routes/CategoriaRouter";
 import { router } from "./routes/Router";
 import "./database"; //Conexion con la base de datos.
+import  session  from "express-session";
+import passport from "passport";
+import './lib/passport';
+const flash = require('connect-flash');
+var cookieParser = require('cookie-parser')
+import { Helpers } from "./lib/helpers";
+const protect = new Helpers;
 
 const app = express();
-
+app.use(cookieParser('keyboard cat'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  cookie: { maxAge: 60000 },
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Middleware - rutas
 
 
 app.use(router);
-app.use("/user", routerUser);
-app.use("/productos", routerProductos);
+app.use("/user", protect.isLoggedIn ,routerUser);
+app.use("/productos", protect.isLoggedIn,routerProductos);
 app.use("/login", routerCuenta);
-app.use("/categoria",routerCategoria)
+app.use("/categoria",protect.isLoggedIn ,routerCategoria)
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
   if (err instanceof Error) {

@@ -1,5 +1,8 @@
-import { Router } from "express";
+import { response, Router } from "express";
 import { CuentaController } from "../controllers/CuentaController";
+import passport from "passport";
+import { Helpers } from "../lib/helpers";
+const protect = new Helpers;
 
 export const routerCuenta = Router();
 const createCuentaController = new CuentaController();
@@ -10,23 +13,38 @@ const autenticationController = new CuentaController
 
 //  ------------- Categoria ---------------
 
-routerCuenta.get('/', function(req,res){
+routerCuenta.get('/',protect.isNotLoggedIn, function(req,res){
   res.render("login")
 })
 
-routerCuenta.post("/",autenticationController.loginautentication);
+routerCuenta.post("/",passport.authenticate('local.signin',{
+  
+  successRedirect:'/',
+  failureRedirect:'/login',
+  failureFlash: true
+}));
 
 routerCuenta.get("/registrarse", (request, response) => {
   response.render("registrarse");
 });
 
-routerCuenta.post("/registrarse", createCuentaController.createhandle);
+routerCuenta.post('/registrarse',passport.authenticate('local.signup',{
+  
+  successRedirect:'/login',
+  failureRedirect:'/login/registrarse',
+  failureFlash: true
+}));
 
-routerCuenta.get("/edit" ,getCuentaDataController.getdatahandle);
+routerCuenta.get('/logout', (req, res) => {
+  req.logOut();
+  res.redirect('/');
+});
 
-routerCuenta.post("/edit", updateCuentaController.updatehandle);
+// routerCuenta.get("/edit" ,getCuentaDataController.getdatahandle);
 
-routerCuenta.post("/delete", deleteCuentaController.deletehandle);
+// routerCuenta.post("/edit", updateCuentaController.updatehandle);
+
+// routerCuenta.post("/delete", deleteCuentaController.deletehandle);
 
 
 

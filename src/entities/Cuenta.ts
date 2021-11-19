@@ -14,7 +14,7 @@ class Cuenta {
   email: string;
 
   @Column()
-  contraseña: number;
+  contraseña: string;
 
   constructor() {
     if (!this.id) {
