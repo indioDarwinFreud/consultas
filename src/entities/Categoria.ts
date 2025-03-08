@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, ManyToOne, ManyToMany, OneToMany} from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany} from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Producto } from "./Producto";
 
@@ -14,6 +14,7 @@ class Categoria {
   @OneToMany( () => Producto, producto => producto.categorias)
   
   productos: Producto [];
+
 
   constructor() {
     if (!this.id) {

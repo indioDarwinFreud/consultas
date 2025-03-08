@@ -5,13 +5,9 @@ import { Helpers } from "../lib/helpers";
 const protect = new Helpers;
 
 export const routerCuenta = Router();
-const createCuentaController = new CuentaController();
-const updateCuentaController = new CuentaController();
-const deleteCuentaController = new CuentaController();
-const getCuentaDataController = new CuentaController();
-const autenticationController = new CuentaController
 
-//  ------------- Categoria ---------------
+
+// Login
 
 routerCuenta.get('/',protect.isNotLoggedIn, function(req,res){
   res.render("login")
@@ -23,6 +19,8 @@ routerCuenta.post("/",passport.authenticate('local.signin',{
   failureRedirect:'/login',
   failureFlash: true
 }));
+
+// Registrar un usuario
 
 routerCuenta.get("/registrarse", (request, response) => {
   response.render("registrarse");
@@ -40,11 +38,7 @@ routerCuenta.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-// routerCuenta.get("/edit" ,getCuentaDataController.getdatahandle);
 
-// routerCuenta.post("/edit", updateCuentaController.updatehandle);
-
-// routerCuenta.post("/delete", deleteCuentaController.deletehandle);
 
 
 

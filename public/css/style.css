@@ -1,42 +1,42 @@
 body {
-  background-color: rgb(235, 233, 233);
+  background-color: rgb(255, 255, 255);
   font-family: 'Open Sans', sans-serif;
   max-width: 100vw!important;
   max-height: 100vh!important;
 }
 
 .nav-icon {
-  width: 50px;
+  width: 100px;
 
 }
 .home-icon{
-  width: 150px;
+  width: 500px;
 }
 
 .primary-btn {
-  background-color: rgb(3, 185, 155);
+  background-color: rgb(37, 163, 163);
   color: #fff;
 }
 
 .primary-btn:hover {
-  background-color: rgb(2, 114, 95);
-  border-color: rgb(3, 185, 155, 0.541);
+  background-color: rgb(3, 67, 110);
+  border-color: rgb(37, 163, 163, 0.541);
   color: rgb(255, 255, 255);
 }
 
 .secondary-btn {
-  background-color: rgb(3, 185, 155);
+  background-color: rgb(37, 163, 163);
   border-color: white;
   color: white;
 }
 
 .secondary-btn:hover {
-  background-color: rgb(2, 114, 95);
+  background-color: rgb(3, 67, 110);
   color: #fff;
 }
 
 .edit-btn {
-  background-color: rgb(82, 195, 125);
+  background-color: rgb(37, 163, 163);
   color: #000;
 }
 
@@ -67,21 +67,21 @@ body {
   display:list-item;
 }
 .login-bnt{
-  background-color: rgb(102, 189, 174);
+  background-color: rgb(37, 163, 163);
   border-color: rgba(1, 255, 213, 0.541);
   color: rgb(255, 255, 255);
 }
 .singup-bnt{
-  background-color: rgb(102, 189, 174);
+  background-color: rgb(37, 163, 163);
   border-color: rgba(1, 255, 213, 0.541);
   color: rgb(255, 255, 255);
 }
 .fondo {
 
-  background-image: linear-gradient(to right, rgb(235, 233, 233),rgba(3, 185, 155, 0.541) , rgb(235, 233, 233));  
+  background-image: linear-gradient(to right, rgb(235, 233, 233),rgba(37, 163, 163) , rgb(235, 233, 233));  
 }
 .decoradonav{
-background-color: rgb(1, 214, 196);
+background-color: rgb(53, 64, 77);
 }
 #message-div {
   border: 2px solid lightgrey;

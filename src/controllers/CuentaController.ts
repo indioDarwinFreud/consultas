@@ -25,19 +25,7 @@ class CuentaController{
     }
 
   }
-  // async createhandle(cuenta) {
-  //   const { username, email, contraseña} = cuenta
 
-  //   const createCuentaService = new CuentaService();
-
-  //   createCuentaService.create({
-  //     username,
-  //     email,
-  //     contraseña,
-  //   })
- 
-
-  // }
   async devolverCuentahandle(request: Request){
     const { username, email, contraseña} = request.body;
     const devolverCuenta = new CuentaService();
@@ -64,18 +52,7 @@ class CuentaController{
     }
   }
 
-  // async getdatahandle(request: Request, response: Response) {
-  //   let { id } = request.query;
-  //   id = id.toString();
-
-  //   const getCuentaDataService = new CuentaService();
-
-  //   const user = await getCuentaDataService.getData(id);
-
-  //   return response.render("edit", {
-  //     user: user
-  //   });
-  // }
+ 
   async getdatahandle(cuenta) {
     let { username } = cuenta;
     username = username.toString();

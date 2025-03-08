@@ -1,31 +1,24 @@
 import { Router } from "express";
 import { UserController } from "../controllers/UserController";
 
-
 export const routerUser = Router();
 
-const createUserController = new UserController();
-const searchUserController = new UserController();
-const updateUserController = new UserController();
-const deleteUserController = new UserController();
-const listUsersController = new UserController();
-const getUserDataController = new UserController();
+const userController = new UserController();
 
-
-routerUser.get("/", listUsersController.listhandle);
+routerUser.get("/", userController.listhandle);
 
 routerUser.get("/add", (request, response) => {
   response.render("add");
 });
 
-routerUser.post("/add", createUserController.createhandle);
+routerUser.post("/add", userController.createhandle.bind(userController));
 
-routerUser.get("/search", searchUserController.searchhandle);
+routerUser.get("/search", userController.searchhandle.bind(userController));
 
-routerUser.get("/edit", getUserDataController.getdatahandle);
+routerUser.get("/edit", userController.getdatahandle.bind(userController));
 
-routerUser.post("/edit", updateUserController.updatehandle);
+routerUser.post("/edit", userController.updatehandle.bind(userController));
 
-routerUser.post("/delete", deleteUserController.deletehandle);
+routerUser.post("/delete", userController.deletehandle.bind(userController));
 
 

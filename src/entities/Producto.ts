@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Categoria } from "./Categoria";
 
@@ -13,6 +13,9 @@ class Producto {
 
   @Column()
   precio: number;
+
+  @Column()
+  cantidad: number;
 
   @Column()
   tipo: string;

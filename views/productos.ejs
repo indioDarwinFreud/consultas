@@ -20,7 +20,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light decoradonav">
     <div class="container">
-      <a class="navbar-brand" href="../"><img src="/img/icon_nav.png" alt="Node.js icon" class="nav-icon"></a>
+      <a class="navbar-brand" href="../"><img src="/img/SolisemTRES.png" alt="Node.js icon" class="nav-icon"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,6 +32,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="./add">Agregar productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./addCateg">Agregar Categoria</a>
           </li>
         </ul>
         <form class="d-flex" action="./search" method="GET">
@@ -45,7 +48,7 @@
   <div class="center">
     <div class="row container centeredd">
       <div class="text-center">
-        <h2>Tabla de Productos</h2>
+        <h2>Lista de Productos</h2>
       </div>
       <br>
       <br>
@@ -53,24 +56,21 @@
       <br>
         <table class="table table-hover">
           <thead>
-            <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Atualizar</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Actualizar</th>
             <th scope="col">Comportamiento</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Precio</th>
           </thead>
           <tbody>
             <% productos.forEach(function(producto) { %>
               <tr>
                 <td>
-                  <%= producto.id %>
-                </td>
-                <td>
                   <%= producto.nombre %>
                 </td>
                 <td>
-                  <%= producto.precio %>
+                  <%= producto.cantidad %>
                 </td>
                 <td>
                   <%= producto.created_at.toLocaleDateString() %>
@@ -82,6 +82,9 @@
                 </td>
                 <td>
                   <%= producto.tipo %>
+                </td>
+                <td>
+                  <%= producto.precio %>
                 </td>
                 <td>
                   <div class="row">

@@ -1,26 +1,27 @@
 import { ProductoController } from "../controllers/ProductoController";
 import { Router } from "express";
+import { CategoriaController } from "../controllers/CategoriaController";
 
 export const routerProductos = Router();
+export const routerCategoria = Router();
 
-const createProductoController = new ProductoController();
-const searchProductoController = new ProductoController();
-const updateProductoController = new ProductoController();
-const deleteProductoController = new ProductoController();
-const listProductosController = new ProductoController();
-const getProductoDataController = new ProductoController();
-const buscaCategoriasController = new ProductoController();
+const productosController = new ProductoController();
 
-routerProductos.get("/",listProductosController.listhandle);
+const categoriasController = new CategoriaController();
 
-routerProductos.post("/add", createProductoController.createhandle);
+routerProductos.get("/",productosController.listhandle.bind(productosController));
+routerProductos.get("/addCateg", (request, response) => {
+    response.render("addcategoria");
+  });
+  routerProductos.post("/addCat", categoriasController.createhandle.bind(categoriasController));
+routerProductos.post("/add", productosController.createhandle.bind(productosController));
 
-routerProductos.get("/add", buscaCategoriasController.searchCategoria);
+routerProductos.get("/add", productosController.searchCategoria.bind(productosController));
 
-routerProductos.get("/search", searchProductoController.searchhandle);
+routerProductos.get("/search", productosController.searchhandle.bind(productosController));
 
-routerProductos.get("/edit", getProductoDataController.getdatahandle);
+routerProductos.get("/edit", productosController.getdatahandle.bind(productosController));
 
-routerProductos.post("/edit", updateProductoController.updatehandle);
+routerProductos.post("/edit", productosController.updatehandle.bind(productosController));
 
-routerProductos.post("/delete", deleteProductoController.deletehandle);
+routerProductos.post("/delete", productosController.deletehandle.bind(productosController));

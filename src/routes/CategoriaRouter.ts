@@ -3,26 +3,21 @@ import { Router } from "express";
 
 export const routerCategoria = Router();
 
-const createCategoriaController = new CategoriaController();
-const searchCategoriaController = new CategoriaController();
-const updateCategoriaController = new CategoriaController();
-const deleteCategoriaController = new CategoriaController();
-const listCategoriasController = new CategoriaController();
-const getCategoriaDataController = new CategoriaController();
 
 
-routerCategoria.get("/",listCategoriasController.listhandle);
+const categoriaController = new CategoriaController();
 
-routerCategoria.get("/add", (request, response) => {
-  response.render("addcategoria");
-});
 
-routerCategoria.post("/add", createCategoriaController.createhandle);
 
-routerCategoria.get("/search", searchCategoriaController.searchhandle);
+routerCategoria.get("/",categoriaController.listhandle);
 
-routerCategoria.get("/edit", getCategoriaDataController.getdatahandle);
 
-routerCategoria.post("/edit", updateCategoriaController.updatehandle);
+routerCategoria.post("/addCat", categoriaController.createhandle.bind(categoriaController));
 
-routerCategoria.post("/delete", deleteCategoriaController.deletehandle);
+routerCategoria.get("/search", categoriaController.searchhandle.bind(categoriaController));
+
+routerCategoria.get("/edit", categoriaController.getdatahandle.bind(categoriaController));
+
+routerCategoria.post("/edit", categoriaController.updatehandle.bind(categoriaController));
+
+routerCategoria.post("/delete", categoriaController.deletehandle.bind(categoriaController));

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { CategoriaService } from "../services/CategoriaService";
 import { ProductoServices } from "../services/ProductoService";
-// ----------------------------------------------------------------------------------------------------
-class ProductoController{
+
+class ProductoController {
   async createhandle(request: Request, response: Response) {
-    const { nombre, precio, categorias, tipo } = request.body;
+    const { nombre, precio, categorias,tipo,  cantidad } = request.body;
 
     const createProductoService = new ProductoServices();
 
@@ -13,6 +13,7 @@ class ProductoController{
         nombre,
         precio,
         categorias,
+        cantidad,
         tipo,
       }).then(() => {
         response.render("message", {
@@ -26,16 +27,16 @@ class ProductoController{
     }
 
   }
-  async searchCategoria(request: Request,response: Response){
+  async searchCategoria(request: Request, response: Response) {
     const listarcategoria = new CategoriaService();
 
     const categorias = await listarcategoria.list()
 
-    return response.render('addproductos',{categorias})
+    return response.render('addproductos', { categorias })
   }
 
   async deletehandle(request: Request, response: Response) {
-    const { id} = request.body;
+    const { id } = request.body;
 
     const deleteProductoService = new ProductoServices();
 
@@ -59,7 +60,7 @@ class ProductoController{
     const getProductoDataService = new ProductoServices();
 
     const producto = await getProductoDataService.getData(id);
-    
+
     const listarcategoria = new CategoriaService();
 
     const categorias = await listarcategoria.list()
@@ -101,12 +102,12 @@ class ProductoController{
   }
 
   async updatehandle(request: Request, response: Response) {
-    const { id, nombre, precio, categorias, tipo } = request.body;
+    const { id, nombre, precio, categorias, tipo, cantidad } = request.body;
 
     const updateProductoService = new ProductoServices();
 
     try {
-      await updateProductoService.update({ id, nombre, precio, categorias, tipo  }).then(() => {
+      await updateProductoService.update({ id, nombre, precio, categorias,tipo, cantidad}).then(() => {
         response.render("message", {
           message: "Producto actualizado correctamente"
         });
