@@ -1,0 +1,21 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routerCategoria = exports.routerProductos = void 0;
+var ProductoController_1 = require("../controllers/ProductoController");
+var express_1 = require("express");
+var CategoriaController_1 = require("../controllers/CategoriaController");
+exports.routerProductos = express_1.Router();
+exports.routerCategoria = express_1.Router();
+var productosController = new ProductoController_1.ProductoController();
+var categoriasController = new CategoriaController_1.CategoriaController();
+exports.routerProductos.get("/", productosController.listhandle.bind(productosController));
+exports.routerProductos.get("/addCateg", function (request, response) {
+    response.render("addcategoria");
+});
+exports.routerProductos.post("/addCat", categoriasController.createhandle.bind(categoriasController));
+exports.routerProductos.post("/add", productosController.createhandle.bind(productosController));
+exports.routerProductos.get("/add", productosController.searchCategoria.bind(productosController));
+exports.routerProductos.get("/search", productosController.searchhandle.bind(productosController));
+exports.routerProductos.get("/edit", productosController.getdatahandle.bind(productosController));
+exports.routerProductos.post("/edit", productosController.updatehandle.bind(productosController));
+exports.routerProductos.post("/delete", productosController.deletehandle.bind(productosController));

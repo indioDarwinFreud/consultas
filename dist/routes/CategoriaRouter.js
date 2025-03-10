@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routerCategoria = void 0;
+var CategoriaController_1 = require("../controllers/CategoriaController");
+var express_1 = require("express");
+exports.routerCategoria = express_1.Router();
+var categoriaController = new CategoriaController_1.CategoriaController();
+exports.routerCategoria.get("/", categoriaController.listhandle);
+exports.routerCategoria.post("/addCat", categoriaController.createhandle.bind(categoriaController));
+exports.routerCategoria.get("/search", categoriaController.searchhandle.bind(categoriaController));
+exports.routerCategoria.get("/edit", categoriaController.getdatahandle.bind(categoriaController));
+exports.routerCategoria.post("/edit", categoriaController.updatehandle.bind(categoriaController));
+exports.routerCategoria.post("/delete", categoriaController.deletehandle.bind(categoriaController));
