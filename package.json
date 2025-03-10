@@ -24,9 +24,9 @@
     "mysql": "^2.18.1",
     "passport": "^0.5.3",
     "passport-local": "^1.0.0",
-    "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.0.2",
-    "typeorm": "^0.2.34",
+    "reflect-metadata": "^0.1.14",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.2.45",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
