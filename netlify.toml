@@ -1,8 +1,0 @@
-[build]
-  command = "npm install && npm run build"
-  functions = "netlify/functions"
-  publish = "dist"
-
-[dev]
-  command = "npm run dev"
-  targetPort = 3000
